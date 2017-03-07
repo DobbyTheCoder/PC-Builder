@@ -6,6 +6,7 @@ public class intel_processor {
 	
 	static int a;
 	public int gen;
+	public int lga;
 	
 	public String choice_i3;
 	public String choice_i5;
@@ -106,13 +107,14 @@ public class intel_processor {
 	{
 		Scanner nc2 = new Scanner(System.in);
 		
-		System.out.println("Make a this.choice:\n1. 2nd Gen\n2. 3rd Gen\n3. 4th Gen\n4. 5th Gen\n5. 6th Gen\n6. 7th Gen\nINPUT( the gen): ");
+		System.out.println("Make a choice:\n1. 2nd Gen\n2. 3rd Gen\n3. 4th Gen\n4. 5th Gen\n5. 6th Gen\n6. 7th Gen\nINPUT( the gen): ");
 		
 		try{
 		int nc2s = nc2.nextInt();
 	    
 		if (nc2s == 2){
 			gen = 2;
+			lga = 1155;
 			this.i3g();
 			
 		}
@@ -120,31 +122,42 @@ public class intel_processor {
 		else if (nc2s == 3){
 			
 			gen = 3;
+			lga = 1155;
 			this.i3g();
 		}
 		
 		else if (nc2s == 4){
 			
 			gen = 4;
+			lga = 1150;
 			this.i3g();
 		}
 		
 		else if (nc2s == 5){
 			
 			gen = 5;
+			lga = 1150;
 			this.i3g();
 		}
 		
 		else if (nc2s == 6){
 			
 			gen = 6;
+			lga = 1151;
 			this.i3g();
 		}
 		
 		else if (nc2s == 7){
 			
 			gen = 7;
+			lga = 1151;
 			this.i3g();
+		}
+		
+		else {
+			
+			System.out.println("Wrong input, please try again!");
+			this.i3();
 		}
 		
 		}catch(InputMismatchException e){
@@ -169,37 +182,49 @@ Scanner nc3 = new Scanner(System.in);
 		if (nc3s == 2){
 			
 			gen = 2;
+			lga = 1155;
 			this.i5g();
 		}
 		
 		else if (nc3s == 3){
 			
 			gen = 3;
+			lga = 1155;
 			this.i5g();
 		}
 		
 		else if (nc3s == 4){
 			
 			gen = 4;
+			lga = 1150;
 			this.i5g();
 		}
 		
 		else if (nc3s == 5){
 			
 			gen = 5;
+			lga = 1150;
 			this.i5g();
 		}
 		
 		else if (nc3s == 6){
 			
 			gen = 6;
+			lga = 1151;
 			this.i5g();
 		}
 		
 		else if (nc3s == 7){
 			
 			gen = 7;
+			lga = 1151;
 			this.i5g();
+		}
+		
+        else {
+			
+			System.out.println("Wrong input, please try again!");
+			this.i5();
 		}
 		
 		}catch(InputMismatchException e){
@@ -214,7 +239,7 @@ Scanner nc3 = new Scanner(System.in);
 	
 	public void i7() throws Exception
 	{
-Scanner nc4 = new Scanner(System.in);
+        Scanner nc4 = new Scanner(System.in);
 		
 		System.out.println("Make a this.choice:\n1. 2nd Gen\n2. 3rd Gen\n3. 4th Gen\n4. 5th Gen\n5. 6th Gen\n6. 7th Gen\nINPUT( the gen): ");
 		
@@ -224,39 +249,50 @@ Scanner nc4 = new Scanner(System.in);
 		if (nc4s == 2){
 			
 			gen = 2;
+			lga = 1155;
 			this.i7g();
 		}
 		
 		else if (nc4s == 3){
 			
 			gen = 3;
+			lga = 1155;
 			this.i7g();
 		}
 		
 		else if (nc4s == 4){
 			
 			gen = 4;
+			lga = 1150;
 			this.i7g();
 		}
 		
 		else if (nc4s == 5){
 			
 			gen = 5;
+			lga = 1150;
 			this.i7g();
 		}
 		
 		else if (nc4s == 6){
 			
 			gen = 6;
+			lga = 1151;
 			this.i7g();
 		}
 		
 		else if (nc4s == 7){
 			
 			gen = 7;
+			lga = 1151;
 			this.i7g();
 		}
 		
+        else {
+			
+			System.out.println("Wrong input, please try again!");
+			this.i7();
+		}
 		}catch(InputMismatchException e){
 			
 			System.out.println("Exception caught! Please enter a number as input.\n");
@@ -359,7 +395,7 @@ Scanner nc4 = new Scanner(System.in);
 		
 		
 			else if(gen == 6){
-			
+		
 			System.out.println("Available processors :\n1. i3_6100\n2. i3_6300\nINPUT(you know the drill)");
 			
 			try{
@@ -423,13 +459,14 @@ Scanner nc4 = new Scanner(System.in);
 					}
 			}
 		
-       
+       MoBo obj = new MoBo();
+       obj.something(choice_i3 , lga);
 		}
 		
 	void i5g(){
 		
 		
-Scanner i5 = new Scanner(System.in);
+        Scanner i5 = new Scanner(System.in);
 		
 		if (gen == 2){
 		    
@@ -614,6 +651,10 @@ Scanner i5 = new Scanner(System.in);
 						i5.close();
 					}
 			}
+		
+		MoBo obj = new MoBo();
+		
+		obj.something(choice_i5 ,  lga);
 	}
 	
 	void i7g() throws Exception{
@@ -822,7 +863,10 @@ Scanner i7 = new Scanner(System.in);
 						i7.close();
 					}
 			}
-		System.out.println(choice_i7);
+		
+        MoBo obj = new MoBo();
+		
+		obj.something(choice_i7 ,  lga);
 		
 	}
 	

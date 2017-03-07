@@ -45,10 +45,7 @@ public class Processors{
 		} finally{
 			ch1.close();
 		}
-		
-	 	
+			
 	}    
 	
-		
-
 }
