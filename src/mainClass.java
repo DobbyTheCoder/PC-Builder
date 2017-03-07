@@ -6,7 +6,6 @@ public class mainClass extends intel_processor {
 		Processors wp = new Processors();
 		
 		wp.choseP();
-      
 	}
 
 }

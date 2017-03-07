@@ -423,7 +423,7 @@ Scanner nc4 = new Scanner(System.in);
 					}
 			}
 		
-       this.getChoice(choice_i3);
+       
 		}
 		
 	void i5g(){
@@ -826,9 +826,5 @@ Scanner i7 = new Scanner(System.in);
 		
 	}
 	
-	public String getChoice(String a){
-		String b = a;
-		System.out.println(b);
-		return b;
-	}
+	
 }
