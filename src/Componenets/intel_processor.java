@@ -7,7 +7,13 @@ public class intel_processor {
 	static int a;
 	public int gen;
 	public int lga;
-	
+	public int priority;
+	/*
+	priority order for different chips as follows
+	lga 1155 - 2nd and 3rd gen - priority- 1 to non overclockable, 2 to overclockable.
+	lga 1150 - 4th and 5th gen - priority- 1 to non overclockable, 2 to less budget overclockable, 3 to high budget overclockable.
+	lga 1151 - 6th and 7th gen - priority- 1 to low budget non overclockable , 2 to high budget non OC, 3 to low budget OC, 4 to high budget OC
+	*/
 	public String choice_i3;
 	public String choice_i5;
 	public String choice_i7;
@@ -107,7 +113,7 @@ public class intel_processor {
 	{
 		Scanner nc2 = new Scanner(System.in);
 		
-		System.out.println("Make a choice:\n1. 2nd Gen\n2. 3rd Gen\n3. 4th Gen\n4. 5th Gen\n5. 6th Gen\n6. 7th Gen\nINPUT( the gen): ");
+		System.out.println("Make a choice:\n2nd Gen\n3rd Gen\n4th Gen\n5th Gen\n6th Gen\n7th Gen\nINPUT( the gen): ");
 		
 		try{
 		int nc2s = nc2.nextInt();
@@ -172,9 +178,9 @@ public class intel_processor {
 	
     public void i5()
 	{
-Scanner nc3 = new Scanner(System.in);
+        Scanner nc3 = new Scanner(System.in);
 		
-		System.out.println("Make a this.choice:\n1. 2nd Gen\n2. 3rd Gen\n3. 4th Gen\n4. 5th Gen\n5. 6th Gen\n6. 7th Gen\nINPUT( the gen): ");
+		System.out.println("Make a this.choice:\n2nd Gen\n3rd Gen\n4th Gen\n5th Gen\n6th Gen\n7th Gen\nINPUT( the gen): ");
 		
 		try{
 		int nc3s = nc3.nextInt();
@@ -241,7 +247,7 @@ Scanner nc3 = new Scanner(System.in);
 	{
         Scanner nc4 = new Scanner(System.in);
 		
-		System.out.println("Make a this.choice:\n1. 2nd Gen\n2. 3rd Gen\n3. 4th Gen\n4. 5th Gen\n5. 6th Gen\n6. 7th Gen\nINPUT( the gen): ");
+		System.out.println("Make a this.choice:\n2nd Gen\n3rd Gen\n4th Gen\n5th Gen\n6th Gen\n7th Gen\nINPUT( the gen): ");
 		
 		try{
 		int nc4s = nc4.nextInt();
@@ -307,6 +313,8 @@ Scanner nc3 = new Scanner(System.in);
 		
 		Scanner i3 = new Scanner(System.in);
 		
+		priority = 1;
+		
 		if (gen == 2){
 		    
 			System.out.println("Only one available processor i.e " + i3_2130 + ". ENTER 1 TO CHOSE THIS OR 2 TO GO BACK:");
@@ -322,9 +330,7 @@ Scanner nc3 = new Scanner(System.in);
 				System.out.println("Exception caught! Please enter a number as input.\n");
 				this.i3();
 			
-			} finally{
-				i3.close();
-			}
+			} 
 		}
 			
 			else if (gen == 3){
@@ -348,9 +354,7 @@ Scanner nc3 = new Scanner(System.in);
 				System.out.println("Exception caught! Please enter a number as input.\n");
 				this.i3();
 			
-			} finally{
-				i3.close();
-			}
+			} 
 		}
 		
 		
@@ -380,9 +384,7 @@ Scanner nc3 = new Scanner(System.in);
 				System.out.println("Exception caught! Please enter a number as input.\n");
 				this.i3();
 			
-			} finally{
-				i3.close();
-			}
+			} 
 		}
 		
 		
@@ -418,9 +420,7 @@ Scanner nc3 = new Scanner(System.in);
 					System.out.println("Exception caught! Please enter a number as input.\n");
 					this.i3();
 				
-				} finally{
-					i3.close();
-				}
+				} 
 			
 		}
 		
@@ -441,9 +441,12 @@ Scanner nc3 = new Scanner(System.in);
 					else if (i3i == 3)
 						choice_i3 = i3_7320;
 					
-					else if (i3i == 4)
+					else if (i3i == 4){
+						
 						choice_i3 = i3_7350k;
-					
+					    priority = 3;
+					    
+					}
 					else{
 						System.out.println("Please enter a valid input!");
 						this.i3();
@@ -454,20 +457,18 @@ Scanner nc3 = new Scanner(System.in);
 						System.out.println("Exception caught! Please enter a number as input.\n");
 						this.i3();
 					
-					} finally{
-						i3.close();
-					}
+					} 
 			}
 		
        MoBo obj = new MoBo();
-       obj.something(choice_i3 , lga);
+       obj.rec(choice_i3 , lga , priority);
 		}
 		
 	void i5g(){
 		
 		
         Scanner i5 = new Scanner(System.in);
-		
+		priority = 1;
 		if (gen == 2){
 		    
 			System.out.println("Only one available processor i.e " + i5_2550k + ". ENTER 1 TO CHOSE THIS OR 2 TO GO BACK:");
@@ -475,16 +476,16 @@ Scanner nc3 = new Scanner(System.in);
 			try{
 			int i5i = i5.nextInt();
 			
-			if (i5i == 1)
+			if (i5i == 1){
+				
+				priority = 2;
 				choice_i5 = i5_2550k;
-			
+			}
 			}catch(InputMismatchException e){
 				
 				System.out.println("Exception caught! Please enter a number as input.\n");
 				this.i5();
 			
-			} finally{
-				i5.close();
 			}
 		}
 			
@@ -509,9 +510,7 @@ Scanner nc3 = new Scanner(System.in);
 				System.out.println("Exception caught! Please enter a number as input.\n");
 				this.i5();
 			
-			} finally{
-				i5.close();
-			}
+			} 
 		}
 		
 		
@@ -536,9 +535,11 @@ Scanner nc3 = new Scanner(System.in);
 			else if (i5i == 4)
 				choice_i5 = i5_4690;
 			
-			else if (i5i == 5)
+			else if (i5i == 5){
+				
+			    priority = 3;
 				choice_i5 = i5_4690k;
-			
+			}
 			else{
 				System.out.println("Please enter a valid input!");
 				this.i5();
@@ -550,8 +551,6 @@ Scanner nc3 = new Scanner(System.in);
 				System.out.println("Exception caught! Please enter a number as input.\n");
 				this.i5();
 			
-			} finally{
-				i5.close();
 			}
 		}
 		
@@ -571,9 +570,7 @@ Scanner nc3 = new Scanner(System.in);
 					System.out.println("Exception caught! Please enter a number as input.\n");
 					this.i5();
 				
-				} finally{
-					i5.close();
-				}
+				} 
 			
 		}
 		
@@ -594,12 +591,15 @@ Scanner nc3 = new Scanner(System.in);
 				else if (i5i == 3)
 					choice_i5 = i5_6500;
 				
-				else if (i5i == 4)
+				else if (i5i == 4){
+				    priority = 2;
 					choice_i5 = i5_6600;
-				
-				else if (i5i == 5)
+				}
+				else if (i5i == 5){
+					
+					priority = 3;
 					choice_i5 = i5_6600k;
-				
+				}
 				else{
 					System.out.println("Please enter a valid input!");
 					this.i5();
@@ -611,9 +611,7 @@ Scanner nc3 = new Scanner(System.in);
 					System.out.println("Exception caught! Please enter a number as input.\n");
 					this.i5();
 				
-				} finally{
-					i5.close();
-				}
+				} 
 			
 		}
 		
@@ -631,12 +629,16 @@ Scanner nc3 = new Scanner(System.in);
 					else if (i5i == 2)
 						choice_i5 = i5_7500;
 					
-					else if (i5i == 3)
+					else if (i5i == 3){
+						
+						priority = 2;
 						choice_i5 = i5_7600;
-					
-					else if (i5i == 4)
+					}
+					else if (i5i == 4){
+						
+						priority = 3;
 						choice_i5 = i5_7600k;
-					
+					}
 					else{
 						System.out.println("Please enter a valid input!");
 						this.i5();
@@ -647,20 +649,20 @@ Scanner nc3 = new Scanner(System.in);
 						System.out.println("Exception caught! Please enter a number as input.\n");
 						this.i5();
 					
-					} finally{
-						i5.close();
-					}
+					} 
 			}
 		
 		MoBo obj = new MoBo();
 		
-		obj.something(choice_i5 ,  lga);
+		obj.rec(choice_i5 ,  lga , priority);
 	}
 	
 	void i7g() throws Exception{
 		
-Scanner i7 = new Scanner(System.in);
+        Scanner i7 = new Scanner(System.in);
 		
+        priority = 3;
+        
 		if (gen == 2){
 		    
 			System.out.println("Available processors:\n1. i7 2600k\n2. i7 2700k\nINPUT:");
@@ -668,12 +670,16 @@ Scanner i7 = new Scanner(System.in);
 			try{
 			int i7i = i7.nextInt();
 			
-			if (i7i == 1)
+			if (i7i == 1){
+				
+				 priority = 2;
 				choice_i7 = i7_2600k;
-			
-			else if (i7i == 2)
+			}
+			else if (i7i == 2){
+				
+				 priority = 2;
 				choice_i7 = i7_2700k;
-			
+			}
 			else{
 				System.out.println("Please enter a valid input!");
 				this.i7();
@@ -683,9 +689,7 @@ Scanner i7 = new Scanner(System.in);
 				System.out.println("Exception caught! Please enter a number as input.\n");
 				this.i7();
 			
-			} finally{
-				i7.close();
-			}
+			} 
 		}
 			
 			else if (gen == 3){
@@ -701,7 +705,7 @@ Scanner i7 = new Scanner(System.in);
 			
 			else if (i7i == 2)
 				choice_i7 = i7_3970X;
-			
+
 			else{
 				System.out.println("Please enter a valid input!");
 				this.i7();
@@ -712,9 +716,7 @@ Scanner i7 = new Scanner(System.in);
 				System.out.println("Exception caught! Please enter a number as input.\n");
 				this.i7();
 			
-			} finally{
-				i7.close();
-			}
+			} 
 		}
 		
 		
@@ -727,9 +729,10 @@ Scanner i7 = new Scanner(System.in);
 			try{
 			int i7i = i7.nextInt();
 			
-			if (i7i == 1)
+			if (i7i == 1){
+				 priority = 2;
 				choice_i7 = i7_4771;
-			
+			}
 			else if (i7i == 2)
 				choice_i7 = i7_4770k;
 			
@@ -751,9 +754,7 @@ Scanner i7 = new Scanner(System.in);
 				System.out.println("Exception caught! Please enter a number as input.\n");
 				this.i7();
 			
-			} finally{
-				i7.close();
-			}
+			} 
 		}
 		
 		
@@ -783,9 +784,7 @@ Scanner i7 = new Scanner(System.in);
 					System.out.println("Exception caught! Please enter a number as input.\n");
 					this.i7();
 				
-				} finally{
-					i7.close();
-				}
+				} 
 			
 		}
 		
@@ -799,24 +798,30 @@ Scanner i7 = new Scanner(System.in);
 				try{
 				int i7i = i7.nextInt();
 				
-				if (i7i == 1)
+				if (i7i == 1){
+					 priority = 2;
 					choice_i7 = i7_6700;
-				
+				}
 				else if (i7i == 2)
 					choice_i7 = i7_6700k;
 				
-				else if (i7i == 3)
+				else if (i7i == 3){
+					 priority = 4;
 					choice_i7 = i7_6800k;
-				
-				else if (i7i == 4)
+				}
+				else if (i7i == 4){
+					
+					 priority = 4;
 					choice_i7 = i7_6850k;
-				
-				else if (i7i == 5)
+				}
+				else if (i7i == 5){
+					 priority = 4;
 					choice_i7 = i7_6900k;
-				
-				else if (i7i == 6)
+				}
+				else if (i7i == 6){
+					 priority = 4;
 					choice_i7 = i7_6950X;
-				
+				}
 				
 				else{
 					System.out.println("Please enter a valid input!");
@@ -829,9 +834,7 @@ Scanner i7 = new Scanner(System.in);
 					System.out.println("Exception caught! Please enter a number as input.\n");
 					this.i7();
 				
-				} finally{
-					i7.close();
-				}
+				} 
 			
 		}
 		
@@ -843,12 +846,14 @@ Scanner i7 = new Scanner(System.in);
 				try{
 					int i7i = i7.nextInt();
 					
-					if (i7i == 1)
+					if (i7i == 1){
+						 priority = 2;
 						choice_i7 = i7_7700;
-					
-					else if (i7i == 2)
+					}
+					else if (i7i == 2){
+						 priority = 4;
 						choice_i7 = i7_7700k;
-					
+					}
 					else{
 						System.out.println("Please enter a valid input!");
 						this.i7();
@@ -859,14 +864,11 @@ Scanner i7 = new Scanner(System.in);
 						System.out.println("Exception caught! Please enter a number as input.\n");
 						this.i7();
 					
-					} finally{
-						i7.close();
-					}
+					} 
 			}
-		
         MoBo obj = new MoBo();
 		
-		obj.something(choice_i7 ,  lga);
+		obj.rec(choice_i7 ,  lga ,  priority);
 		
 	}
 	
