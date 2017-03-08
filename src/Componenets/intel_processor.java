@@ -873,4 +873,4 @@ public class intel_processor {
 	}
 	
 	
-
+}
