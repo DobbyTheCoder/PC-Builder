@@ -867,10 +867,10 @@ public class intel_processor {
 					} 
 			}
         MoBo obj = new MoBo();
-		
+		System.out.println("yolo, typing this on phone xD");
 		obj.rec(choice_i7 ,  lga ,  priority);
 		
 	}
 	
 	
-}
+
